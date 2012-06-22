@@ -4,6 +4,16 @@
     %title>
       css2ap - css to asset pipeline (scss) converter
     %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/css/style.css"}
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-32871056-3']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
   %body
     #content
       #wrapper
