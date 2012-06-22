@@ -1,0 +1,20 @@
+- unless @error.blank?
+  %strong
+    = @error.message
+%form{:action=>'/convert', :method=>"POST"}
+  %fieldset
+    %legend CSS here
+    %textarea{:name=>"css", :rows=>"20", :cols=>"100"}
+      = @css
+    %br/
+    %label{:for=>"path_to_be_delted"} Path to be deleted
+    %input{:type=>"text", :value=>@path_to_be_deleted, :name=>"path_to_be_deleted"}/
+    %label{:for=>"beautify_css", :style=>"padding-left: 20px;"} Beautify css?
+    %input{:type=>"checkbox", :name=>"beautify_css"}/
+    %br/
+    %input{:type=>"submit", :value=>"convert"}
+%fieldset
+  %legend SCSS here
+  %textarea{:name=>"scss", :rows=>"20", :cols=>"100"}
+    = @converted
+  %br/

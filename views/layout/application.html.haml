@@ -1,0 +1,34 @@
+!!!
+%html
+  %head
+    %title>
+      css2ap - css to asset pipeline (scss) converter
+    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/css/style.css"}
+  %body
+    #content
+      #wrapper
+        #top
+          .head_left
+            %h1 CSS2AP
+          .head_right
+            CSS to Asset Pipeline (SCSS) Converter
+            %br/
+            %br/
+            Converts CSS to SCSS and changes all url (in attributes) into image-url('...')
+          .clear
+        #content
+          #flash_msg
+            -#- flash.each do |key, message|
+              -#.msg{:class=>key}
+                -#= message
+          = yield
+        #footer
+          .foot_left
+            Brought to you by
+            = link_to "Prograils.com", "http://prograils.com"
+            %br
+            Source code
+            = link_to "here", "https://github.com/prograils/css2ap"
+          .foot_right
+            Highly inspired by
+            = link_to "css2sass", "http://css2sass.heroku.com/"
