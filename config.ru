@@ -19,7 +19,7 @@ class Css2ap < Happy::Controller
         input = input.gsub(/([^;])\}/, '\1;' + "\n}\n\n")
         @css = input.gsub(/  ([^:]+):/, "  " + '\1: ')
       end
-      @converted = @css.gsub /(\s*)url\(\"?#{@path_to_be_deleted}(.*)\"?\)/, '\1image-url(\'\2\')'
+      @converted = @css.gsub /(\s*)url\(\"?#{@path_to_be_deleted}(.*)\"\)/, '\1image-url(\'\2\')'
       begin
         @converted = Sass::CSS.new(@converted).render(:scss)
       rescue Sass::SyntaxError => e
