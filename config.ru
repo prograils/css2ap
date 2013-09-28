@@ -11,15 +11,15 @@ class Css2ap < Happy::Controller
     on('convert') do
       @css, @path_to_be_deleted = params[:css], params[:path_to_be_deleted]
       @beautify_css = params[:beautify_css]
-      @path_to_be_deleted.gsub! /\//, "\/"
-      if @beautify_css
+      @path_to_be_deleted.gsub!(/\//, "\/")
+      if params.has_key?(:beautify_css)
         input = @css.gsub("{", " {\n  ")
         input = input.gsub(",", ", ")
         input = input.gsub(";", ";\n  ")
         input = input.gsub(/([^;])\}/, '\1;' + "\n}\n\n")
         @css = input.gsub(/  ([^:]+):/, "  " + '\1: ')
       end
-      @converted = @css.gsub /(\s*)url\(\"?#{@path_to_be_deleted}(.*)\"?\)/, '\1image-url(\'\2\')'
+      @converted = @css.gsub(/(\s*)url\(([\"\']?)(#{@path_to_be_deleted})?(.*)\2\)/, '\1image-url(\'\4\')')
       begin
         @converted = Sass::CSS.new(@converted).render(:scss)
       rescue Sass::SyntaxError => e
